@@ -5,6 +5,8 @@ title: Ruby
 
 ### Quelques astuces avec FactoryBot
 
+#### Générer un identifiant unique sur un modèle
+
 ```ruby
 # spec/fixtures/usernames.rb
 USERNAMES = ['hermione.granger',
@@ -26,18 +28,26 @@ USERNAMES = ['hermione.granger',
 require 'fixtures/usernames'
 
 FactoryBot.define do
-  # sequence
   sequence :email do |n|
     username = USERNAMES[n] || "wizard_#{n}"
 
     "#{username}@hogwarts.wiz"
   end
+```
+#### Utiliser un alias pour nommer un modèle
 
+Cette technique sert bien dans les cas où le modèle est utilisé dans une association.
+
+```ruby
   # aliases
   factory :user, aliases: [:owner] do
     email
   end
-  
+```
+
+### Autres astuces que je n'ai pas encore triées
+
+```ruby
   # trait
   trait :with_books do
     items { create_list :book, 3 }
