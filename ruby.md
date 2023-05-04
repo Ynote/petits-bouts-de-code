@@ -47,7 +47,7 @@ FactoryBot.define do
   end
 end
 ```
-### Factory one-to-many
+### Créer une factory avec une relation one-to-many
 
 Cette technique sert bien dans les cas où la classe spécifie une association _one-to-many_ avec le helper `has_many`.
 
@@ -59,7 +59,7 @@ FactoryBot.define do
 end
 ```
 
-### Factory many-to-many
+###  Créer une factory avec une relation many-to-many
 
 Avec des factories associées qui n'existent pas et doivent être créées en même temps : 
 
@@ -88,23 +88,34 @@ FactoryBot.define do
   end
 end
 ```
-### Autres astuces que je n'ai pas encore triées
 
-```ruby
-  
-  # by-passing validations
+#### Passer les validations à la création
+
+Pour faciliter l'écriture et la lecture d'une spec, on a parfois besoin de forcer la création d'une instance de factory sans passer par toutes les validations de la classe associée.
+
+``` ruby
+FactoryBot.define do
   factory :user do
     …
     
     to_create { |instance| instance.save(validate: false) }
   end
-  
-  # custom factory name
-  factory :bare_user, class: User do
+end
+```
+
+### Utiliser un nom de factory personnalisé
+
+```ruby
+FactoryBot.define do
+ factory :bare_user, class: User do
     …
   end
-  
-  # using Active Storage
+```
+
+### Simuler l'usage de ActiveStorage
+
+```ruby
+FactoryBot.define do
   factory :user do
     …
     
