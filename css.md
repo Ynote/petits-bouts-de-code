@@ -5,7 +5,7 @@ title: CSS
 
 ### Ajuster la taille des caractères cyrilliques
 
-```
+```css
 @font-face {
   font-family: "Ajusted Cyrillic";
   size-adjust: 95%;
