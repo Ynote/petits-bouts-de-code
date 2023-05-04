@@ -28,10 +28,12 @@ USERNAMES = ['hermione.granger',
 require 'fixtures/usernames'
 
 FactoryBot.define do
-  sequence :email do |n|
-    username = USERNAMES[n] || "wizard_#{n}"
+  factory :user do
+    sequence :email do |n|
+      username = USERNAMES[n] || "wizard_#{n}"
 
-    "#{username}@hogwarts.wiz"
+      "#{username}@hogwarts.wiz"
+    end
   end
 end
 ```
@@ -48,7 +50,8 @@ FactoryBot.define do
   end
 end
 ```
-### Créer une factory avec une relation one-to-many
+
+#### Créer une factory avec une relation one-to-many
 
 Cette technique sert bien dans les cas où la classe spécifie une association _one-to-many_ avec le helper `has_many`.
 
@@ -64,7 +67,7 @@ FactoryBot.define do
 end
 ```
 
-###  Créer une factory avec une relation many-to-many
+#### Créer une factory avec une relation many-to-many
 
 Avec des factories associées qui n'existent pas et doivent être créées en même temps : 
 
@@ -118,7 +121,7 @@ FactoryBot.define do
 end
 ```
 
-### Utiliser un nom de factory personnalisé
+#### Utiliser un nom de factory personnalisé
 
 ```ruby
 # spec/factory/user.rb
@@ -129,7 +132,7 @@ FactoryBot.define do
   end
 ```
 
-### Simuler l'usage de ActiveStorage
+#### Simuler l'usage de ActiveStorage
 
 ```ruby
 # spec/factory/user.rb
