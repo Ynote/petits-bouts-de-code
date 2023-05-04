@@ -8,7 +8,7 @@ title: Ruby
 <details>
   <summary>
     Voir toutes les astuces disponibles en un coup d'œil 
-  <summary>
+  </summary>
   
   <ul class="toc">
     <li><a href="#générer-un-identifiant-unique-sur-une-instance">Générer un identifiant unique sur une instance</a></li>
@@ -18,8 +18,6 @@ title: Ruby
     <li><a href="#outrepasser-les-validations-à-la-création">Outrepasser les validations à la création</a></li>
     <li><a href="#utiliser-un-nom-de-factory-personnalisé">Utiliser un nom de factory personnalisé</a></li>
     <li><a href="#simuler-lusage-de-activestorage">Simuler l’usage de ActiveStorage</a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
   </ul>
 </details>
 
