@@ -5,7 +5,7 @@ title: Ruby
 
 ### Quelques astuces avec FactoryBot
 
-```
+```ruby
 # spec/fixtures/usernames.rb
 USERNAMES = ['hermione.granger',
              'ron.weasley',
@@ -90,7 +90,7 @@ end
 
 ### Quelques astuces avec ActiveStorage
 
-```
+```ruby
 # SEE CONFIGURATION ON: https://github.com/rails/rails/blob/main/guides/source/configuring.md#configuring-active-storage
 
 # Delete variations when config.active_storage.track_variants = true
