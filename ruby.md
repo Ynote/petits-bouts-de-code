@@ -3,6 +3,91 @@ title: Ruby
 ---
 ## Ruby on Rails
 
+### FactoryBot cheatsheet
+
+```
+# spec/fixtures/usernames.rb
+USERNAMES = ['hermione.granger',
+             'ron.weasley',
+             'harry.potter',
+             'fred.weasley',
+             'georges.weasley',
+             'luna.lovegood',
+             'ginny.weasley',
+             'draco.malfoy',
+             'albus.dumbledore',
+             'hannah.abbott',
+             'godric.gryffindor',
+             'helga.hufflepuff',
+             'neville.longbottom',
+             'remus.lupin']
+
+# spec/factory/user.rb
+require 'fixtures/usernames'
+
+FactoryBot.define do
+  # sequence
+  sequence :email do |n|
+    username = USERNAMES[n] || "wizard_#{n}"
+
+    "#{username}@hogwarts.wiz"
+  end
+
+  # aliases
+  factory :user, aliases: [:owner] do
+    email
+  end
+  
+  # trait
+  trait :with_books do
+    items { create_list :book, 3 }
+  end
+  
+  # many-to-many relationship: create without existing resources
+  trait :with_bedrooms do
+    after :create do |user|
+      user.bedrooms = create_list :bedroom, 3
+    end
+  end
+  
+  # many-to-many relationhsip: create with existing resources
+  transient do
+    taught_by nil
+  end
+  
+  after(:create) do |user, factory|
+    if taught_by
+      create(:mentorship, user: user, professor: factory.taught_by)
+    end
+  end
+  
+  # by-passing validations
+  factory :user do
+    …
+    
+    to_create { |instance| instance.save(validate: false) }
+  end
+  
+  # custom factory name
+  factory :bare_user, class: User do
+    …
+  end
+  
+  # using Active Storage
+  factory :user do
+    …
+    
+    after :build do |user|
+      user.image.attach(
+        io: File.open('spec', 'fixtures', 'files', 'YOUR_FILE.jpg'),
+        filename: 'YOUR_FILE.jpg',
+        content_type: 'image/jpeg',
+       )
+    end
+  end
+end
+```
+
 ### ActiveStorage cheatsheet
 
 ```
