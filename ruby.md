@@ -130,7 +130,7 @@ Pour faciliter l'écriture et la lecture d'une spec, on a parfois besoin de forc
 
 FactoryBot.define do
   factory :user do
-    …
+    # …
     
     to_create { |instance| instance.save(validate: false) }
   end
@@ -144,7 +144,7 @@ end
 
 FactoryBot.define do
  factory :bare_user, class: User do
-    …
+    # …
   end
 ```
 
@@ -155,7 +155,7 @@ FactoryBot.define do
 
 FactoryBot.define do
   factory :user do
-    …
+    # …
     
     after :build do |user|
       user.image.attach(
