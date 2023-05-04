@@ -1,45 +1,48 @@
 :root {
-    --couleur-primaire : #753785;
-        --main-text-color: #302c37;
-        --link-color: #52697c;
-        --background-color: #fdfdfd;
-        --secondary-color: #43495a;
-        --alternate-color: #608c9a;
-        --alternate-light-color: #74afb2;
-        --transparent-white-87: rgba(253, 253, 253, .87);
-        --transparent-white-30: rgba(253, 253, 253, .3);
-        --transparent-white-10: rgba(253, 253, 253, .1);
-        --error-color: #ad7590;
-        --muted-color-500: #8a8395;
-        --muted-color-200: #cdc8d5;
-        --muted-color-100: #efecf2;
-    }
+  --couleur-primaire : #753785;
+  --main-text-color: #302c37;
+  --link-color: #52697c;
+  --background-color: #fdfdfd;
+  --secondary-color: #43495a;
+  --alternate-color: #608c9a;
+  --alternate-light-color: #74afb2;
+  --transparent-white-87: rgba(253, 253, 253, .87);
+  --transparent-white-30: rgba(253, 253, 253, .3);
+  --transparent-white-10: rgba(253, 253, 253, .1);
+  --error-color: #ad7590;
+  --muted-color-500: #8a8395;
+  --muted-color-200: #cdc8d5;
+  --muted-color-100: #efecf2;
+}
     
-    html {
-        background-color: var(--background-color);
-        font-family: monospace, serif;
-        color: var(--main-text-color);
-    }
+html {
+  background-color: var(--background-color);
+  font-family: monospace, serif;
+  color: var(--main-text-color);
+}
     
-    a {
-        color: var(--link-color);
-        text-decoration: underline;
-    }
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
     
-    h1, h2 {
-        border-bottom: none;
-    }
+h1, h2 {
+  border-bottom: none;
+}
     
-    h2 {
-        margin-top: 4rem;
-    }
+h2 {
+  margin-top: 4rem;
+}
     
-    blockquote, pre {
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-    }
+blockquote, pre {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
    
-    .highlighter-rouge { margin-bottom: 3rem; }
+.highlighter-rouge,
+ul { 
+  margin-bottom: 3rem; 
+}
 
 
 // GitHub Rougify theme
