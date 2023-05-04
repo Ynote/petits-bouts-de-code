@@ -39,11 +39,19 @@ blockquote, pre {
   margin-bottom: 3rem;
 }
    
-.highlighter-rouge,
-ul { 
+.highlighter-rouge { 
   margin-bottom: 3rem; 
 }
 
+details {
+  cursor: pointer;
+  margin-bottom: 3rem; 
+}
+
+summary:hover  {
+  color: var(--link-color);
+  text-decoration: underline;
+}
 
 // GitHub Rougify theme
 .highlight table td { padding: 5px; }
