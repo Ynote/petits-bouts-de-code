@@ -5,6 +5,14 @@ title: Ruby
 
 ### Quelques astuces avec FactoryBot
 
+- [Générer un identifiant unique sur une instance](#générer-un-identifiant-unique-sur-une-instance)
+- [Utiliser un alias pour nommer une factory](#utiliser-un-alias-pour-nommer-une-factory)
+- [Créer une factory avec une relation one-to-many](#créer-une-factory-avec-une-relation-one-to-many)
+- [Créer une factory avec une relation many-to-many](#créer-une-factory-avec-une-relation-many-to-many)
+- [Outrepasser les validations à la création](#outrepasser-les-validations-à-la-création)
+- [Utiliser un nom de factory personnalisé](#utiliser-un-nom-de-factory-personnalisé)
+- [Simuler l’usage de ActiveStorage](#simuler-lusage-de-activestorage)
+
 #### Générer un identifiant unique sur une instance
 
 ```ruby
@@ -105,7 +113,7 @@ FactoryBot.define do
 end
 ```
 
-#### Passer les validations à la création
+#### Outrepasser les validations à la création
 
 Pour faciliter l'écriture et la lecture d'une spec, on a parfois besoin de forcer la création d'une instance de factory sans passer par toutes les validations de la classe associée.
 
