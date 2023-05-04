@@ -35,6 +35,7 @@ FactoryBot.define do
   end
 end
 ```
+
 #### Utiliser un alias pour nommer un modèle
 
 Cette technique sert bien dans les cas où le modèle est utilisé dans une association.
@@ -58,18 +59,25 @@ FactoryBot.define do
 end
 ```
 
-### Autres astuces que je n'ai pas encore triées
+### Factory many-to-many
+
+Avec des factories associées qui n'existent pas et doivent être créées en même temps : 
 
 ```ruby
-  # many-to-many relationship: create without existing resources
+FactoryBot.define do
   trait :with_bedrooms do
     after :create do |user|
       user.bedrooms = create_list :bedroom, 3
     end
   end
-  
-  # many-to-many relationhsip: create with existing resources
-  transient do
+end
+```
+
+Avec des factories associées existantes : 
+
+```ruby
+FactoryBot.define do
+ transient do
     taught_by nil
   end
   
@@ -78,6 +86,11 @@ end
       create(:mentorship, user: user, professor: factory.taught_by)
     end
   end
+end
+```
+### Autres astuces que je n'ai pas encore triées
+
+```ruby
   
   # by-passing validations
   factory :user do
