@@ -1,9 +1,9 @@
 ---
 title: JavaScript
 ---
-## Testing
+## Test
 
-### Chai/Mocha/Sinon cheatsheet
+### Mise en place de tests avec Chai/Mocha/Sinon
 
 ```
 // ========== Stubs and mocks ==========
