@@ -3,7 +3,7 @@ title: Ruby
 ---
 ## Ruby on Rails
 
-### FactoryBot cheatsheet
+### Quelques astuces avec FactoryBot
 
 ```
 # spec/fixtures/usernames.rb
@@ -88,7 +88,7 @@ FactoryBot.define do
 end
 ```
 
-### ActiveStorage cheatsheet
+### Quelques astuces avec ActiveStorage
 
 ```
 # SEE CONFIGURATION ON: https://github.com/rails/rails/blob/main/guides/source/configuring.md#configuring-active-storage
