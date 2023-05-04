@@ -1,0 +1,64 @@
+---
+title: Ruby
+---
+## Ruby on Rails
+
+### ActiveStorage cheatsheet
+
+```
+# SEE CONFIGURATION ON: https://github.com/rails/rails/blob/main/guides/source/configuring.md#configuring-active-storage
+
+# Delete variations when config.active_storage.track_variants = true
+my_model_instance.image.service.delete_prefixed(my_model_instance.image.key)
+
+# List all variations on a model
+# Here, `my_model_attachment_name` refers to the name I give to the attachment with the `:has_one_attached` macro.
+# cf. https://edgeguides.rubyonrails.org/active_storage_overview.html
+my_model_attachment_name = "image"
+my_model_variations_transformations = MyModel.attachment_reflections[my_model_attachment_name].variants.keys.map do |variant_name|
+   MyModel.first.public_send(my_model_attachment_name).variant(variant_name).variation.transformations
+end
+# Example of an output 
+# =>
+# [{:format=>"jpg", :resize_to_fit=>[400, 400], :saver=>{:quality=>30}},
+#  {:format=>"jpg", :resize_to_fit=>[600, 600], :saver=>{:quality=>30}},
+#  {:format=>"jpg", :resize_to_limit=>[800, 800], :saver=>{:quality=>70}}]
+
+# List all existing variation digests
+current_variant_variation_digests = my_model_variations_transformations.map do |transformations|
+  # Use the same digest as ActiveRecord::Variation
+  # cf. https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/variation.rb#L78
+  OpenSSL::Digest::SHA1.base64digest Marshal.dump(transformations.symbolize_keys)
+end
+
+# Count unused old variants
+all_variation_digests = ActiveStorage::VariantRecord.all.distinct.pluck(:variation_digest)
+useless_digests = all_variation_digests - current_variant_variation_digests
+unused_old_variants = ActiveStorage::VariantRecord.where(variation_digest: useless_digests)
+unused_old_variants_count = unused_old_variants.count
+
+# Delete unused variant records and their files from my storage
+unused_old_variants.destroy_all
+
+# Only delete files of unused blobs on your storage
+useless_digests.each do |digest|
+  ActiveStorage::Blob.service.delete(digest)
+end
+
+# Use cached public files with S3
+
+# Add this to config/storage.yml
+# public: true,
+# upload: 
+#   cache_control: public, max-age=<%= whatever I want %>, immutable
+
+# If this is only for the variants, destroy all the variants and reupload them using variant.processed.url
+# If this is for the original attachments and the variants, purge the attachments (cf. https://github.com/rails/rails/blob/3ea99f53fafbcacfda58b11e2c0537fc043742f2/activestorage/lib/active_storage/attached/one.rb#L7)
+
+# RSpec config
+config.before do
+  ActiveStorage::Current.urls_options = {
+    host: "example.com",
+  }
+end
+```
