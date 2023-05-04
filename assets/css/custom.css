@@ -46,6 +46,7 @@
   color: #24292f;
   background-color: #f6f8fa;
   overflow: auto;
+  font-size: .9rem;
 }
 .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
   color: #cf222e;
@@ -153,4 +154,4 @@
   color: #24292f;
   font-weight: bold;
 }
-
+pre.hightlight { margin: 0;}
