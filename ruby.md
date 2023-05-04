@@ -5,7 +5,7 @@ title: Ruby
 
 ### Quelques astuces avec FactoryBot
 
-#### Générer un identifiant unique sur un modèle
+#### Générer un identifiant unique sur une instance
 
 ```ruby
 # spec/fixtures/usernames.rb
@@ -36,11 +36,12 @@ FactoryBot.define do
 end
 ```
 
-#### Utiliser un alias pour nommer un modèle
+#### Utiliser un alias pour nommer une factory
 
-Cette technique sert bien dans les cas où le modèle est utilisé dans une association.
+Cette technique sert dans les cas où la classe associée à la factory spécifie une relation à une autre classe également associée à une factory.
 
 ```ruby
+# spec/factory/user.rb
 FactoryBot.define do
   factory :user, aliases: [:owner] do
     email
@@ -52,9 +53,13 @@ end
 Cette technique sert bien dans les cas où la classe spécifie une association _one-to-many_ avec le helper `has_many`.
 
 ```ruby
+# spec/factory/user.rb
+
 FactoryBot.define do
-  trait :with_books do
-    items { create_list :book, 3 }
+  factory :user do
+    trait :with_books do
+      items { create_list :book, 3 }
+    end
   end
 end
 ```
@@ -64,10 +69,14 @@ end
 Avec des factories associées qui n'existent pas et doivent être créées en même temps : 
 
 ```ruby
+# spec/factory/user.rb
+
 FactoryBot.define do
-  trait :with_bedrooms do
-    after :create do |user|
-      user.bedrooms = create_list :bedroom, 3
+  factory :user do
+    trait :with_bedrooms do
+      after :create do |user|
+        user.bedrooms = create_list :bedroom, 3
+      end
     end
   end
 end
@@ -76,14 +85,18 @@ end
 Avec des factories associées existantes : 
 
 ```ruby
+# spec/factory/user.rb
+
 FactoryBot.define do
- transient do
-    taught_by nil
-  end
+  factory :user do
+    transient do
+      taught_by nil
+    end
   
-  after(:create) do |user, factory|
-    if taught_by
-      create(:mentorship, user: user, professor: factory.taught_by)
+    after(:create) do |user, factory|
+      if taught_by
+        create(:mentorship, user: user, professor: factory.taught_by)
+      end
     end
   end
 end
@@ -94,6 +107,8 @@ end
 Pour faciliter l'écriture et la lecture d'une spec, on a parfois besoin de forcer la création d'une instance de factory sans passer par toutes les validations de la classe associée.
 
 ``` ruby
+# spec/factory/user.rb
+
 FactoryBot.define do
   factory :user do
     …
@@ -106,6 +121,8 @@ end
 ### Utiliser un nom de factory personnalisé
 
 ```ruby
+# spec/factory/user.rb
+
 FactoryBot.define do
  factory :bare_user, class: User do
     …
@@ -115,6 +132,8 @@ FactoryBot.define do
 ### Simuler l'usage de ActiveStorage
 
 ```ruby
+# spec/factory/user.rb
+
 FactoryBot.define do
   factory :user do
     …
