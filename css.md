@@ -1,9 +1,9 @@
 ---
 title: CSS
 ---
-# Typographie
+## Typographie
 
-## Ajuster la taille des caractères cyrillique
+#### Ajuster la taille des caractères cyrilliques
 
 ```
 @font-face {
