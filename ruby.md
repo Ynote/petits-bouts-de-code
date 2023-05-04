@@ -33,26 +33,34 @@ FactoryBot.define do
 
     "#{username}@hogwarts.wiz"
   end
+end
 ```
 #### Utiliser un alias pour nommer un modèle
 
 Cette technique sert bien dans les cas où le modèle est utilisé dans une association.
 
 ```ruby
-  # aliases
+FactoryBot.define do
   factory :user, aliases: [:owner] do
     email
   end
+end
+```
+### Factory one-to-many
+
+Cette technique sert bien dans les cas où la classe spécifie une association _one-to-many_ avec le helper `has_many`.
+
+```ruby
+FactoryBot.define do
+  trait :with_books do
+    items { create_list :book, 3 }
+  end
+end
 ```
 
 ### Autres astuces que je n'ai pas encore triées
 
 ```ruby
-  # trait
-  trait :with_books do
-    items { create_list :book, 3 }
-  end
-  
   # many-to-many relationship: create without existing resources
   trait :with_bedrooms do
     after :create do |user|
