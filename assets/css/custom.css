@@ -38,6 +38,9 @@
         margin-top: 3rem;
         margin-bottom: 3rem;
     }
+   
+    .highlighter-rouge { margin-bottom: 3rem; }
+
 
 // GitHub Rougify theme
 .highlight table td { padding: 5px; }
