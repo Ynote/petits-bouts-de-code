@@ -1,6 +1,8 @@
 ---
 title: CLI
 ---
+Pour les configurations générales de mes environnements, j'ai un dépôt Git dédié appelé [dotfiles](https://gitlab.com/ynote_hk/dotfiles/-/tree/main/).
+
 ## Apache
 
 ### Activer un site
