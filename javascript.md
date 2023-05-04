@@ -5,7 +5,7 @@ title: JavaScript
 
 ### Mise en place de tests avec Chai/Mocha/Sinon
 
-```
+```javascript
 // ========== Stubs and mocks ==========
 
 // Using sinon-test and sinon-chai
