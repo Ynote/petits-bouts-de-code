@@ -5,13 +5,23 @@ title: Ruby
 
 ### Quelques astuces avec FactoryBot
 
-- [Générer un identifiant unique sur une instance](#générer-un-identifiant-unique-sur-une-instance)
-- [Utiliser un alias pour nommer une factory](#utiliser-un-alias-pour-nommer-une-factory)
-- [Créer une factory avec une relation one-to-many](#créer-une-factory-avec-une-relation-one-to-many)
-- [Créer une factory avec une relation many-to-many](#créer-une-factory-avec-une-relation-many-to-many)
-- [Outrepasser les validations à la création](#outrepasser-les-validations-à-la-création)
-- [Utiliser un nom de factory personnalisé](#utiliser-un-nom-de-factory-personnalisé)
-- [Simuler l’usage de ActiveStorage](#simuler-lusage-de-activestorage)
+<details>
+  <summary>
+    Voir toutes les astuces disponibles en un coup d'œil 
+  <summary>
+  
+  <ul class="toc">
+    <li><a href="#générer-un-identifiant-unique-sur-une-instance">Générer un identifiant unique sur une instance</a></li>
+    <li><a href="#utiliser-un-alias-pour-nommer-une-factory">Utiliser un alias pour nommer une factory</a></li>
+    <li><a href="#créer-une-factory-avec-une-relation-one-to-many">Créer une factory avec une relation one-to-many</a></li>
+    <li><a href="#créer-une-factory-avec-une-relation-many-to-many">Créer une factory avec une relation many-to-many</a></li>
+    <li><a href="#outrepasser-les-validations-à-la-création">Outrepasser les validations à la création</a></li>
+    <li><a href="#utiliser-un-nom-de-factory-personnalisé">Utiliser un nom de factory personnalisé</a></li>
+    <li><a href="#simuler-lusage-de-activestorage">Simuler l’usage de ActiveStorage</a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  </ul>
+</details>
 
 #### Générer un identifiant unique sur une instance
 
