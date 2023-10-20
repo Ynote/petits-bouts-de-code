@@ -1,6 +1,34 @@
 ---
-title: JavaScript
+title: "JavaScript"
 ---
+## Turbo
+
+### Mettre à jour la navigation avec Turbo
+
+Dans certains cas, on veut mettre à jour la navigation côté client tout en utilisant des [`turbo-stream`](https://turbo.hotwired.dev/reference/streams). 
+
+Cas d'usage : 
+- Sur une page avec des onglets, on veut que chaque clic sur un onglet change l'URL.
+- Par défaut, [Turbo](https://github.com/hotwired/turbo/tree/c207f5b25758e4a084e8ae42e49712b91cf37114) ne mettra pas l'URL à jour.
+- On doit ajouter un bout de JavaScript personnalisé pour faire ça.
+
+```javascript
+const url = new URL(path)
+
+// Update the browser history
+history.pushState({}, null, path) 
+
+// Turbo uses the URL of the page it renders to save a snapshot (HTML output for cache) 
+// just before rendering a new page.
+// This means that when we update the URL programatically with JavaScript with history.pushState,
+// Turbo still uses the first URL that matches Turbo rendering.
+// We have to tell Turbo what is the last rendered URL, so it can save the snapshot for the cache under the right URL. This is important to make the back button work properly.
+Turbo.navigator.view.lastRenderedLocation = url
+
+// Update Turbo history
+Turbo.navigator.history.replace(url)
+```
+
 ## Test
 
 ### Mise en place de tests avec Chai/Mocha/Sinon
@@ -104,4 +132,4 @@ describe('myTest', () => {
     })
   })
 })
-```
+``` 
