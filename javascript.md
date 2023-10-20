@@ -13,17 +13,23 @@ Cas d'usage :
 - Par défaut, [Turbo](https://github.com/hotwired/turbo/tree/c207f5b25758e4a084e8ae42e49712b91cf37114) ne mettra pas l'URL à jour.
 - J'ajoute un bout de JavaScript personnalisé pour faire ça.
 
+_Attention : Ce hack ne permet pas de mettre en cache dans Turbo les pages visitées programmatiquement. Il permet seulement à Turbo de mettre en cache correctement les pages lorsqu'on utilise le bouton `Précédent`._
+
 ```javascript
 const url = new URL(path)
 
 // Update the browser history
 history.pushState({}, null, path) 
 
-// Turbo uses the URL of the page it renders to save a snapshot (HTML output for cache) 
-// just before rendering a new page.
-// This means that when we update the URL programatically with JavaScript with history.pushState,
+// Turbo uses the URL of the page it renders 
+// to save a snapshot (HTML output for cache) 
+// just before rendering a new page (eg. when using the back button or loading an entire new page)
+// This means that when we update the URL programatically
+// with JavaScript with history.pushState,
 // Turbo still uses the first URL that matches Turbo rendering.
-// We have to tell Turbo what is the last rendered URL, so it can save the snapshot for the cache under the right URL. This is important to make the back button work properly.
+// We have to tell Turbo what is the last rendered URL,
+// so it can save the snapshot for the cache under the right URL.
+// This is important to make the back button work properly.
 Turbo.navigator.view.lastRenderedLocation = url
 
 // Update Turbo history
