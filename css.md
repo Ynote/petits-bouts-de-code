@@ -1,5 +1,6 @@
 ---
-title: CSS
+title: "CSS"
+order: 2
 ---
 ## Typographie
 
