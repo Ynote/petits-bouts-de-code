@@ -1,5 +1,6 @@
 ---
-title: Ruby
+title: "Ruby"
+order: 3
 ---
 ## Ruby on Rails
 
