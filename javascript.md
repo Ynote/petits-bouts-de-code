@@ -6,12 +6,12 @@ order: 4
 
 ### Mettre à jour la navigation avec Turbo
 
-Dans certains cas, on veut mettre à jour la navigation côté client tout en utilisant des [`turbo-stream`](https://turbo.hotwired.dev/reference/streams). 
+Dans certains cas, j'ai besoin de mettre à jour la navigation côté client tout en utilisant des [`turbo-stream`](https://turbo.hotwired.dev/reference/streams). 
 
 Cas d'usage : 
-- Sur une page avec des onglets, on veut que chaque clic sur un onglet change l'URL.
+- Sur une page avec des onglets, je veux que chaque clic sur un onglet change l'URL (un peu comme sur les SPAs).
 - Par défaut, [Turbo](https://github.com/hotwired/turbo/tree/c207f5b25758e4a084e8ae42e49712b91cf37114) ne mettra pas l'URL à jour.
-- On doit ajouter un bout de JavaScript personnalisé pour faire ça.
+- J'ajoute un bout de JavaScript personnalisé pour faire ça.
 
 ```javascript
 const url = new URL(path)
