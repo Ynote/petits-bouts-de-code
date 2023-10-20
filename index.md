@@ -1,5 +1,6 @@
 ---
-title: Petits bouts de code
+title: "Petits bouts de code"
+order: 1
 ---
 # Petits bouts de code
 
