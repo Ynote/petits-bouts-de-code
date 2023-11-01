@@ -1,6 +1,7 @@
 ---
 title: "JavaScript"
 order: 4
+in_menu: true
 ---
 ## Turbo
 
