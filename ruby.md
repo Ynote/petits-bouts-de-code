@@ -1,6 +1,7 @@
 ---
 title: "Ruby"
-order: 3
+order: 2
+in_menu: true
 ---
 ## Ruby on Rails
 
