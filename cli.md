@@ -1,6 +1,7 @@
 ---
 title: "CLI"
 order: 6
+in_menu: false
 ---
 Pour les configurations générales de mes environnements, j'ai un dépôt Git dédié appelé [dotfiles](https://gitlab.com/ynote_hk/dotfiles/-/tree/main/).
 
