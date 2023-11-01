@@ -1,6 +1,7 @@
 ---
 title: "Markdown"
 order: 5
+in_menu: true
 ---
 ## Attribut title
 
