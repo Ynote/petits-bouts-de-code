@@ -1,6 +1,7 @@
 ---
 title: "Petits bouts de code"
 order: 1
+in_menu: true
 ---
 # Petits bouts de code
 
