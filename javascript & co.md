@@ -1,5 +1,5 @@
 ---
-title: "JavaScript"
+title: "JavaScript & Co"
 order: 4
 in_menu: true
 ---
