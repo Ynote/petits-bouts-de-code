@@ -3,7 +3,7 @@ title: "CLI"
 order: 6
 in_menu: true
 ---
-Pour les configurations générales de mes environnements, j'ai un dépôt Git dédié appelé [dotfiles](https://gitlab.com/ynote_hk/dotfiles/-/tree/main/)..
+Pour les configurations générales de mes environnements, j'ai un dépôt Git dédié appelé [dotfiles](https://gitlab.com/ynote_hk/dotfiles/-/tree/main/).
 
 ## Apache
 
